@@ -1,4 +1,5 @@
 # Rede Produtora de Texto = ReProduTex
+# Por Alexandre Menezes Barroso 2018-2022
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
