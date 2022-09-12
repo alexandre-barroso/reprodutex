@@ -4,5 +4,5 @@ Rede Produtora de Textos. Texto (input) -> rede neural -> Novo texto gerado letr
 
 Demonstração do funcionamento:
 
-![reprodutex](https://github.com/alexandre-barroso/reprodutex/blob/master/reprodutex_opt.gif)
+![reprodutex](https://github.com/alexandre-barroso/reprodutex/blob/main/reprodutex_opt.gif)
 
