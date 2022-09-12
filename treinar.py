@@ -1,3 +1,6 @@
+#ReProduTex
+#Por Alexandre Menezes Barroso 2018-2022
+
 #deleta conteúdo do corpus antigo
 corpus_zerado = open('corpus_completo.txt', 'r+')
 corpus_zerado.truncate(0)
@@ -78,9 +81,9 @@ for i in range(0, len(corpus) - limite, passos):
     frases.append(corpus[i: i + limite])
     proximos_caracteres.append(corpus[i + limite])
     
-x = np.zeros((len(frases), limite, len(caracteres)), dtype=np.bool)
+x = np.zeros((len(frases), limite, len(caracteres)), dtype=bool)
 
-y = np.zeros((len(frases), len(caracteres)), dtype=np.bool)
+y = np.zeros((len(frases), len(caracteres)), dtype=bool)
 
 for i, frase in enumerate(frases):
     for t, caractere in enumerate(frase):
@@ -106,16 +109,15 @@ print('>>> DIGITE: \n\n 1. "c" para continuar treino de onde parou. \n\n 2. "r" 
 
 opcao = input('> ')
 
-epoch = input('\n> Quantas iterações (epochs) a rede neural deve rodar?\n>  ')
-epoch = int(epoch)
-
-batch_size = input('\n> Qual o batch_size?\n>  ')
-batch_size = int(batch_size)
 print('')
 
 if opcao.lower() == 'r':
 
-    otimizador = RMSprop(lr=0.01)
+    epoch = input('\n> Quantas iterações (epochs) a rede neural deve rodar?\n>  ')
+    epoch = int(epoch)
+    batch_size = input('\n> Qual o batch_size?\n>  ')
+    batch_size = int(batch_size)
+    otimizador = RMSprop(learning_rate=0.01)
     rede_neural.compile(loss='categorical_crossentropy', optimizer=otimizador)
     peso_salvos = "neuronios.hdf5"
     checkpoint = ModelCheckpoint(peso_salvos, monitor='loss',
@@ -131,6 +133,10 @@ if opcao.lower() == 'r':
     
 elif opcao.lower() == 'c':
 
+    epoch = input('\n> Quantas iterações (epochs) a rede neural deve rodar?\n>  ')
+    epoch = int(epoch)
+    batch_size = input('\n> Qual o batch_size?\n>  ')
+    batch_size = int(batch_size)
     del rede_neural
     rede_neural = load_model('rede_neural.h5')
     peso_salvos = "neuronios.hdf5"
